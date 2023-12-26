@@ -2,9 +2,12 @@ import { red } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 
 enum ColorPalette {
-    GREEN = "#1ed760",
+    GREEN = "#0e5222",
+    DARKER_GREEN = "#0f7834",
+    LIGHTER_GREEN = "#1dd262",
     BLACK = "#000000",
     GREY = "#888888",
+    WHITE = "#ffffff",
 }
 
 // A custom theme for this app
@@ -17,6 +20,9 @@ const theme = createTheme({
     },
     primary: {
       main: ColorPalette.GREEN,
+      contrastText: ColorPalette.WHITE,
+      dark: ColorPalette.DARKER_GREEN,
+      light: ColorPalette.LIGHTER_GREEN,
     },
     secondary: {
       main: ColorPalette.GREY,
