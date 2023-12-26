@@ -1,33 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { Button, Grid, Stack } from '@mui/material'
+import { PlayerToolbar } from './components/playerToolbar/PlayerToolbar'
+import { Sidebar } from './components/sidebar/Sidebar'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Grid container width={'100%'}>
+        <Grid item xs={12} xl={12}>
+        {/* header toolbar */}
+          <PlayerToolbar />
+        </Grid>
+        <Grid item xs={12} xl={12}>
+          {/* Nav options? WIP: ask */}
+          <Stack direction={"row"} p={1} justifyContent={"space-between"}>
+            <Button variant={"contained"}>Home</Button>
+            <Button variant={"contained"}>Playlists</Button>
+            <Button variant={"contained"}>Artists</Button>
+            <Button variant={"contained"}>Albums</Button>
+            <Button variant={"contained"}>Songs</Button>
+            <Button variant={"contained"}>Genres</Button>
+            <Button variant={"contained"}>Settings</Button>
+          </Stack>
+        </Grid>
+        <Grid item xs={4} xl={4}>
+          {/* side bar */}
+          <Sidebar />
+        </Grid>
+        <Grid item xs={8} xl={8}>
+          {/* song list */}
+        </Grid>
+      </Grid>
     </>
   )
 }
