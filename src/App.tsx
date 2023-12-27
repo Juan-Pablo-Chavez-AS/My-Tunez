@@ -1,7 +1,8 @@
 import './App.css'
-import { Button, Grid, Stack } from '@mui/material'
+import { Grid } from '@mui/material'
 import { PlayerToolbar } from './components/playerToolbar/PlayerToolbar'
 import { Sidebar } from './components/sidebar/Sidebar'
+import { OptionsToolBar } from './components/optionsToolBar/OptionsToolBar'
 
 const App = () => {
   return (
@@ -13,15 +14,7 @@ const App = () => {
         </Grid>
         <Grid item xs={12} xl={12}>
           {/* Nav options? WIP: ask */}
-          <Stack direction={"row"} p={1} justifyContent={"space-between"}>
-            <Button variant={"contained"}>Home</Button>
-            <Button variant={"contained"}>Playlists</Button>
-            <Button variant={"contained"}>Artists</Button>
-            <Button variant={"contained"}>Albums</Button>
-            <Button variant={"contained"}>Songs</Button>
-            <Button variant={"contained"}>Genres</Button>
-            <Button variant={"contained"}>Settings</Button>
-          </Stack>
+          <OptionsToolBar />
         </Grid>
         <Grid item xs={4} xl={4}>
           {/* side bar */}
