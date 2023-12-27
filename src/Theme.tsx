@@ -22,10 +22,13 @@ const theme = createTheme({
       main: ColorPalette.GREEN,
       contrastText: ColorPalette.WHITE,
       dark: ColorPalette.DARKER_GREEN,
-      light: ColorPalette.LIGHTER_GREEN,
+      light: ColorPalette.LIGHTER_GREEN
     },
     secondary: {
-      main: ColorPalette.GREY,
+      main: ColorPalette.LIGHTER_GREEN,
+      contrastText: ColorPalette.WHITE,
+      dark: ColorPalette.DARKER_GREEN,
+      light: ColorPalette.WHITE
     },
     // black: {
     //   main: "#000000", // background? kinda
