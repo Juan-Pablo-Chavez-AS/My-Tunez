@@ -1,7 +1,7 @@
 import { Button, Stack } from "@mui/material";
 
 export const OptionsToolBar = () => {
-  return <Stack direction={"row"} p={1} justifyContent={"space-between"}>
+  return <Stack direction={"row"} justifyContent={"space-between"}>
     <Stack direction={"row"} spacing={1}>
       <Button variant={"contained"}>Home</Button>
       <Button variant={"contained"}>Playlists</Button>
