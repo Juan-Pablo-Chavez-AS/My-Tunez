@@ -17,6 +17,11 @@ export default class AlbumRepository {
         return this.albumList;
     }
 
+    getAlbumsByArtist(artistId: number): Album[] {
+        if (artistId === 0) return this.getAlbums();
+        return this.albumList.filter((album) => album.artist === artistId);
+    }
+
     getById(id: number): Album | undefined {
         return this.albumList.find((album) => album.id === id);
     }
