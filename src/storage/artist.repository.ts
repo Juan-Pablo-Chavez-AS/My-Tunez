@@ -14,7 +14,7 @@ export default class ArtistRepository {
     }
 
     getArtists(): Artist[] {
-        return this.artistList;
+        return [... this.artistList];
     }
 
     getById(id: number): Artist | undefined {

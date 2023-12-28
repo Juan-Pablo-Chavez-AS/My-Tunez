@@ -1,10 +1,10 @@
 export interface Artist {
-  id?: number
+  id: number
   name: string
-  genres?: string[]
-  members?: string[]
+  genres: string[]
+  members: string[]
   image: string
-  webpage?: string
+  webpage: string
 }
 
 export interface Song {

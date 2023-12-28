@@ -16,11 +16,11 @@ const App = () => {
           {/* Nav options? WIP: ask */}
           <OptionsToolBar />
         </Grid>
-        <Grid item xs={4} xl={4} height={'80%'} overflow={"auto"}>
+        <Grid item xs={3} xl={3} height={'80%'} overflow={"auto"}>
           {/* side bar */}
           <Sidebar />
         </Grid>
-        <Grid item xs={8} xl={8} height={'80%'} overflow={"auto"}>
+        <Grid item xs={9} xl={9} height={'80%'} overflow={"auto"}>
           {/* song list */}
         </Grid>
       </Grid>
