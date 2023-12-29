@@ -8,14 +8,15 @@ interface AlbumCardProps {
 }
 
 export const AlbumCard: React.FC<AlbumCardProps> = ({ album }) => {
-  return <Card sx={{ display: "flex"}}>
+  return <Card sx={{ display: "flex" }} >
     <CardMedia
       component="img"
       sx={{ width: 200 }}
       image={album.image}
       alt={album.title}
     />
-    <CardContent sx={{ flex: "1" }}>
+    <CardContent sx={{ }}>
+      <Typography>{album.title}</Typography>
       <Typography>{album.title}</Typography>
     </CardContent>
   </Card>;

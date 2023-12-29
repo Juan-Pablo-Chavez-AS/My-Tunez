@@ -1,5 +1,5 @@
 import { ArtistCard } from "../artistCard/ArtistCard";
-import { Stack } from "@mui/material"
+import { Paper, Stack, Typography } from "@mui/material"
 import { Artist } from "../../types/types"
 import React, { useEffect, useState } from "react";
 import ArtistRepository from "../../storage/artist.repository";
@@ -17,8 +17,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ setArtist }) => {
   }, [])
 
   return (
-    <Stack direction={"column"} p={1} spacing={2}>
-      <ArtistCard setArtist={setArtist} artist={null}/>
+    <Stack component={Paper} direction={"column"} p={1} spacing={2}>
+      {
+        artists.length === 0
+        ? <Typography textAlign={"center"} fontSize={"2.5rem"}>No artists</Typography>
+        : <ArtistCard setArtist={setArtist} artist={null}/>
+      }
       {artists.map((artist: Artist, index: number) => {
         return <ArtistCard setArtist={setArtist} artist={artist} key={index}/>
       })}

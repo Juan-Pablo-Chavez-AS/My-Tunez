@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { Album, Artist } from "../../types/types";
-// import AlbumRepository from "../../storage/album.repository";
 import { AlbumCard } from "./AlbumCard";
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import AlbumRepository from "../../storage/album.repository";
 
 interface AlbumListProps {
@@ -17,7 +16,10 @@ export const AlbumList: React.FC<AlbumListProps> = ({ artist }) => {
     setAlbums(repository.getAlbumsByArtist(artist?.id || 0))
   }, [artist]);
 
-  return <Stack spacing={2} m={1}>
+  return <Stack spacing={2} m={1} overflow={"hidden"}>
+    {
+      albums.length === 0 && <Typography textAlign={"center"} fontSize={"2.5rem"}>No albums</Typography>
+    }
     {albums.map((album: Album, index: number) => {
       return <AlbumCard key={index} album={album} />
     })}

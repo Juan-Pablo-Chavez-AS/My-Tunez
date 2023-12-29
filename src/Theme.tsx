@@ -6,7 +6,7 @@ enum ColorPalette {
     DARKER_GREEN = "#0f7834",
     LIGHTER_GREEN = "#1dd262",
     BLACK = "#000000",
-    GREY = "#888888",
+    GREY = "#222222",
     WHITE = "#ffffff",
 }
 
@@ -16,7 +16,7 @@ const theme = createTheme({
     mode: "dark",
     background: {
         default: ColorPalette.BLACK,
-        paper: ColorPalette.BLACK,
+        paper: ColorPalette.GREY
     },
     primary: {
       main: ColorPalette.GREEN,

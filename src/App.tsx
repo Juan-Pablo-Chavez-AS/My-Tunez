@@ -12,7 +12,7 @@ const App = () => {
 
   return (
     <>
-      <Grid container width={'100%'} height={'100vh'}>
+      <Grid container width={'100%'} height={'100vh'} spacing={1}>
         <Grid item xs={12} xl={12} height={'5%'}>
           <PlayerToolbar />
         </Grid>
