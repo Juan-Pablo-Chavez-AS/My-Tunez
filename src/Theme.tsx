@@ -2,12 +2,12 @@ import { red } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 
 enum ColorPalette {
-    GREEN = "#0e5222",
-    DARKER_GREEN = "#0f7834",
-    LIGHTER_GREEN = "#1dd262",
-    BLACK = "#000000",
-    GREY = "#222222",
-    WHITE = "#ffffff",
+  GREEN = "#0e5222",
+  DARKER_GREEN = "#0f7834",
+  LIGHTER_GREEN = "#1dd262",
+  BLACK = "#000000",
+  GREY = "#222222",
+  WHITE = "#ffffff",
 }
 
 // A custom theme for this app
@@ -15,8 +15,8 @@ const theme = createTheme({
   palette: {
     mode: "dark",
     background: {
-        default: ColorPalette.BLACK,
-        paper: ColorPalette.GREY
+      default: ColorPalette.BLACK,
+      paper: ColorPalette.GREY
     },
     primary: {
       main: ColorPalette.GREEN,
@@ -46,6 +46,31 @@ const theme = createTheme({
       main: red.A700,
     },
   },
+  components: {
+    MuiCard: {
+      defaultProps: {
+        elevation: 2,
+        sx: {
+          display: "flex",
+          zIndex: 2,
+          transition: "all 0.4s ease-in-out",
+          cursor: "pointer",
+          "&:hover": {
+            transform: "scale(1.02)",
+            bgcolor: "#282828",
+        },
+          bgcolor: "#181818",
+        },
+      },
+    },
+    MuiPaper: {
+      defaultProps: {
+        sx: {
+          bgcolor: "#121212",
+        },
+      },
+    }
+  }
 });
 
 export default theme;

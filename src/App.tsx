@@ -12,11 +12,11 @@ const App = () => {
 
   return (
     <>
-      <Grid container width={'100%'} height={'100vh'} spacing={1}>
-        <Grid item xs={12} xl={12} height={'5%'}>
+      <Grid container width={'100%'} height={'100vh'} spacing={0.5} overflow={"hidden"}>
+        <Grid item xs={12} xl={12} height={'10%'}>
           <PlayerToolbar />
         </Grid>
-        <Grid item xs={12} xl={12} height={'5%'}>
+        <Grid item xs={12} xl={12} height={'10%'}>
           <OptionsToolBar />
         </Grid>
         <Grid item xs={3} xl={3} height={'80%'} overflow={"auto"}>

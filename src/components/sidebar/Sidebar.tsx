@@ -17,7 +17,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ setArtist }) => {
   }, [])
 
   return (
-    <Stack component={Paper} direction={"column"} p={1} spacing={2}>
+    <Stack component={Paper} direction={"column"} p={1} spacing={3} overflow={"hidden"}>
       {
         artists.length === 0
         ? <Typography textAlign={"center"} fontSize={"2.5rem"}>No artists</Typography>
