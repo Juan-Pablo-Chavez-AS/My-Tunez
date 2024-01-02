@@ -15,7 +15,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ setArtist }) => {
   useEffect(() => {
     const repository = new ArtistRepository()
     setArtists(repository.getArtists())
-    console.log("aouwndouiwa");
   }, [setArtists])
 
   return (
