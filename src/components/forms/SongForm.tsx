@@ -4,6 +4,7 @@ import { FormBaseContainer } from "./FormBaseContainer";
 import SongRepository from "../../storage/song.repository";
 import { forwardRef, useCallback, useEffect, useState } from "react";
 import AlbumRepository from "../../storage/album.repository";
+import { useSongStore } from "../stores/SongStore";
 
 
 interface SongFormProps {
@@ -17,6 +18,7 @@ export const SongForm: React.FC<SongFormProps> = forwardRef(({ closeModal }, ref
   const [albums, setAlbums] = useState<{ id: number, label: string }[]>([]);
   const [genre, setGenre] = useState<string>("");
   const [file, setFile] = useState<string>("");
+  const { setSongs } = useSongStore();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,6 +32,7 @@ export const SongForm: React.FC<SongFormProps> = forwardRef(({ closeModal }, ref
 
     const songRepository = new SongRepository();
     songRepository.addSong(song);
+    setSongs(songRepository.getSongs());
     closeModal();
   };
 

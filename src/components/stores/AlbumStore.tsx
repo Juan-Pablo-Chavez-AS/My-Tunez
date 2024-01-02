@@ -3,7 +3,7 @@ import { Album } from '../../types/types'
 
 type AlbumStore = {
   albums: Album[]
-  setAlbums: (artists:Album[]) => void
+  setAlbums: (artists: Album[]) => void
 }
 
 export const useAlbumStore = create<AlbumStore>()((set) => ({
