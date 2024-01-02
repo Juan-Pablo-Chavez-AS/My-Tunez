@@ -1,7 +1,7 @@
 import React, { forwardRef, useState } from 'react';
 import { Artist } from '../../types/types';
 import ArtistRepository from '../../storage/artist.repository';
-import { Button, Stack, TextField, Typography } from '@mui/material';
+import { Button, ClickAwayListener, Stack, TextField, Typography } from '@mui/material';
 import { MultipleStringInput } from './MultipleStringInput';
 import { useArtistStore } from '../stores/ArtistStore';
 
@@ -45,58 +45,60 @@ export const ArtistForm = forwardRef(({ closeModal }: ArtistFormProps, ref) => {
         width={"100%"}
         height={"100vh"}
       >
-        <Stack
-          direction={"row"}
-          spacing={1}
-          gap={2}
-          alignItems={"center"}
-          justifyContent={"center"}
-          width={"40%"}
-          bgcolor={"#323232"}
-          p={2}
-          borderRadius={2}
-          flexWrap={"wrap"}
-        >
-          <Typography variant={"h3"} color={"white"}>Add artist</Typography>
-          <TextField
-            required
-            label="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            fullWidth
-          />
-
-          <MultipleStringInput strings={genres} setStringArray={setGenres} inputName='genre' />
-          <MultipleStringInput strings={members} setStringArray={setMembers} inputName='member' />
-
+        <ClickAwayListener onClickAway={closeModal}>
           <Stack
             direction={"row"}
-            width={"100%"}
+            spacing={1}
             gap={2}
+            alignItems={"center"}
+            justifyContent={"center"}
+            width={"40%"}
+            bgcolor={"#323232"}
+            p={2}
+            borderRadius={2}
+            flexWrap={"wrap"}
           >
+            <Typography variant={"h3"} color={"white"}>Add artist</Typography>
             <TextField
               required
-              label="Image link"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-              sx={{ flexGrow: 1 }}
+              label="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              fullWidth
             />
-            <TextField
-              required
-              label="Webpage link"
-              value={webpage}
-              onChange={(e) => setWebpage(e.target.value)}
-              sx={{ flexGrow: 1 }}
-            />
+
+            <MultipleStringInput strings={genres} setStringArray={setGenres} inputName='genre' />
+            <MultipleStringInput strings={members} setStringArray={setMembers} inputName='member' />
+
+            <Stack
+              direction={"row"}
+              width={"100%"}
+              gap={2}
+            >
+              <TextField
+                required
+                label="Image link"
+                value={image}
+                onChange={(e) => setImage(e.target.value)}
+                sx={{ flexGrow: 1 }}
+              />
+              <TextField
+                required
+                label="Webpage link"
+                value={webpage}
+                onChange={(e) => setWebpage(e.target.value)}
+                sx={{ flexGrow: 1 }}
+              />
+            </Stack>
+            <Button
+              type='submit'
+              variant='contained'
+              fullWidth
+            >
+              Add artist
+            </Button>
           </Stack>
-          <Button
-            type='submit'
-            variant='contained'
-            fullWidth
-          >
-            Add artist
-          </Button>
-        </Stack>
+        </ClickAwayListener>
       </Stack>
     </form>
   );
