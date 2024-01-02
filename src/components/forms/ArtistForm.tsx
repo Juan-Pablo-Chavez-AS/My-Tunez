@@ -5,6 +5,7 @@ import { Stack, TextField } from '@mui/material';
 import { MultipleStringInput } from './MultipleStringInput';
 import { useArtistStore } from '../stores/ArtistStore';
 import { FormBaseContainer } from './FormBaseContainer';
+import { useSuccessNotification } from '../stores/SuccesNotificationStore';
 
 interface ArtistFormProps {
   closeModal: () => void;
@@ -19,6 +20,7 @@ export const ArtistForm: React.FC<ArtistFormProps> = forwardRef(({ closeModal },
   const [webpage, setWebpage] = useState<string>("");
   const [ isComplete, setIsComplete ] = useState<boolean>(false);
   const { setArtists } = useArtistStore();
+  const { openNotification } = useSuccessNotification();
 
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -35,6 +37,7 @@ export const ArtistForm: React.FC<ArtistFormProps> = forwardRef(({ closeModal },
     const artistRepository = new ArtistRepository();
     artistRepository.addArtist(artist);
     setArtists(artistRepository.getArtists());
+    openNotification("Artist Succesfully added!");
     closeModal();
   };
 

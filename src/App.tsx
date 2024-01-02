@@ -1,14 +1,16 @@
 import './App.css'
-import { Grid } from '@mui/material'
+import { Alert, Grid, Snackbar } from '@mui/material'
 import { PlayerToolbar } from './components/playerToolbar/PlayerToolbar'
 import { Sidebar } from './components/sidebar/Sidebar'
 import { OptionsToolBar } from './components/optionsToolBar/OptionsToolBar'
 import { useState } from 'react'
 import { Artist } from './types/types'
 import { AlbumList } from './components/albumList/AlbumList'
+import { useSuccessNotification } from './components/stores/SuccesNotificationStore'
 
 const App = () => {
   const [currentArtist, setCurrentArtist] = useState<Artist | null>(null)
+  const { open, closeNotification, text } = useSuccessNotification();
 
   return (
     <>
@@ -26,6 +28,11 @@ const App = () => {
           <AlbumList artist={currentArtist} />
         </Grid>
       </Grid>
+      <Snackbar open={open} anchorOrigin={{ vertical: "top", horizontal: "center"}} autoHideDuration={6000}>
+        <Alert onClose={closeNotification} severity="success" variant='filled' sx={{ width: '100%' }}>
+          {text}
+        </Alert>
+      </Snackbar>
     </>
   )
 }
