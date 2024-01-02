@@ -21,8 +21,11 @@ export default class ArtistRepository {
         return this.artistList.find((artist) => artist.id === id);
     }
 
-    addArtist(artist: Artist): void {
-        this.artistList.push(artist);
+    addArtist(artist: Partial<Artist>): void {
+        artist.id = this.artistList.reduce((currentMax, artist) => {
+            return Math.max(currentMax, artist.id);
+        }, 0) + 1;
+        this.artistList.push(artist as Artist);
         localStorage.setItem('artists', JSON.stringify(this.artistList));
     }
 

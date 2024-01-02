@@ -1,20 +1,22 @@
 import { ArtistCard } from "../artistCard/ArtistCard";
 import { Paper, Stack, Typography } from "@mui/material"
 import { Artist } from "../../types/types"
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ArtistRepository from "../../storage/artist.repository";
+import { useArtistStore } from "../stores/ArtistStore";
 
 interface SidebarProps {
   setArtist: (artist: Artist | null) => void
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({ setArtist }) => {
-  const [artists, setArtists] = useState<Artist[]>([])
+  const [artists, setArtists] = useArtistStore(state => [state.artists, state.setArtists])
 
   useEffect(() => {
     const repository = new ArtistRepository()
     setArtists(repository.getArtists())
-  }, [])
+    console.log("aouwndouiwa");
+  }, [setArtists])
 
   return (
     <Stack component={Paper} direction={"column"} p={1} spacing={3} overflow={"hidden"}>

@@ -1,19 +1,46 @@
-import { Button, Stack } from "@mui/material";
+import { CreateNewFolder, LibraryAdd, PersonAdd } from "@mui/icons-material";
+import { Button, Grid, IconButton, Modal, Stack } from "@mui/material";
+import { ReactElement, useState } from "react";
+import { ArtistForm } from "../forms/ArtistForm";
 
 export const OptionsToolBar = () => {
-  return <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} bgcolor={"#242424"} height={"100%"}>
-    <Stack direction={"row"} spacing={1} justifyContent={"center"}>
-      <Button variant={"contained"}>Artists</Button>
-      <Button variant={"contained"}>Album</Button>
-      <Button variant={"contained"}>Song</Button>
-    </Stack>
-    <Stack direction={"row"} spacing={1} justifyContent={"center"}>
-      <Button variant={"outlined"} color="secondary">Albums</Button>
-      <Button variant={"outlined"} color="secondary">Songs</Button>
-    </Stack>
-    <Stack direction={"row"} spacing={1} justifyContent={"center"}>
-      <Button variant={"outlined"} color="secondary">Genres</Button>
-      <Button variant={"outlined"} color="secondary">Settings</Button>
-    </Stack>
-  </Stack>;
+  const [open, setOpen] = useState(false);
+  const openForm = (form: ReactElement) => {
+    setCurrentForm(form);
+    setOpen(true);
+  };
+  const closeForm = () => setOpen(false);
+  const [currentForm, setCurrentForm] = useState<ReactElement>(<></>);
+
+  return <>
+    <Grid container alignItems={"center"} bgcolor={"#242424"} height={"100%"}>
+      <Grid item component={Stack} xl={3} gap={1} justifyContent={"end"}>
+        <IconButton onClick={() => {
+          openForm(<ArtistForm closeModal={closeForm} />);
+        }}>
+          <PersonAdd color="secondary" />
+        </IconButton>
+        <IconButton >
+          <CreateNewFolder color="secondary" />
+        </IconButton>
+        <IconButton >
+          <LibraryAdd color="secondary" />
+        </IconButton>
+      </Grid>
+      <Grid item component={Stack} xl={5} gap={1} justifyContent={"center"}>
+        <Button variant={"contained"} color="primary">Albums</Button>
+        <Button variant={"contained"} color="secondary">Songs</Button>
+      </Grid>
+      <Grid item component={Stack} xl={4} gap={1} >
+        <Button variant={"outlined"} color="secondary">Genres</Button>
+        <Button variant={"outlined"} color="secondary">Settings</Button>
+      </Grid>
+    </Grid>
+    <Modal
+      open={open}
+      onClose={closeForm}
+    >
+        { currentForm }
+    </Modal>
+  </>
 }

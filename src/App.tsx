@@ -16,7 +16,7 @@ const App = () => {
         <Grid item xs={12} xl={12} height={'10%'}>
           <PlayerToolbar />
         </Grid>
-        <Grid item xs={12} xl={12} height={'10%'}>
+        <Grid item xs={12} xl={12} height={'8%'}>
           <OptionsToolBar />
         </Grid>
         <Grid item xs={3} xl={3} height={'80%'} overflow={"auto"}>
