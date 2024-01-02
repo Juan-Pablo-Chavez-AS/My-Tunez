@@ -33,8 +33,7 @@ export const AlbumForm: React.FC<AlbumFormProps> = forwardRef(({ closeModal }, r
       artist: artist,
       image: image,
       year: year as number,
-      genres: genres,
-      songs: []
+      genres: genres
     };
 
     const albumRepository = new AlbumRepository();

@@ -16,7 +16,7 @@ export const AlbumList: React.FC<AlbumListProps> = ({ artist }) => {
     setAlbums(repository.getAlbumsByArtist(artist?.id || 0))
   }, [artist]);
 
-  return <Stack component={Paper} spacing={2} p={1.5} overflow={"hidden"}>
+  return <Stack component={Paper} spacing={2} p={1.5} overflow={"hidden"} minHeight={"100%"}>
     {
       albums.length === 0 && <Typography textAlign={"center"} fontSize={"2.5rem"}>No albums</Typography>
     }

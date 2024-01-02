@@ -8,12 +8,12 @@ export interface Artist {
 }
 
 export interface Song {
-  id?: number
+  id: number
   title: string
-  artist: number
+  album: number
   genre: string
-  length: number
-  file?: string
+  length?: number
+  file: string
 }
 
 export interface Album {
@@ -23,6 +23,5 @@ export interface Album {
   genres: string[]
   year: number
   image: string
-  songs: Song[]
 }
 // Unoptional most of the fields after 'API' is ready

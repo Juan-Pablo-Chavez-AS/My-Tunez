@@ -17,22 +17,16 @@ export default class SongRepository {
         return this.songList;
     }
 
-    getById(id: number): Song | undefined {
-        return this.songList.find((song) => song.id === id);
+    getByAlbumId(id: number): Song[] {
+        return this.songList.filter((song) => song.album === id);
     }
 
-    addSong(song: Song): void {
-        this.songList.push(song);
+    addSong(song: Partial<Song>): void {
+        song.id = this.songList.reduce((currentMax, song) => {
+            return Math.max(currentMax, song.id);
+        }, 0) + 1;
+        this.songList.push(song as Song);
         localStorage.setItem('songs', JSON.stringify(this.songList));
     }
 
-    removeSong(id: number): void {
-        this.songList = this.songList.filter((song) => song.id !== id);
-        localStorage.setItem('songs', JSON.stringify(this.songList));
-    }
-
-    updateSong(songData: Song, id: number): void {
-        this.songList = this.songList.map((song) => song.id === id ? songData : song);
-        localStorage.setItem('songs', JSON.stringify(this.songList));
-    }
 }

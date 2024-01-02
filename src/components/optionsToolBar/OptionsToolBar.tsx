@@ -3,6 +3,7 @@ import { Button, Grid, IconButton, Modal, Stack } from "@mui/material";
 import { ReactElement, useState } from "react";
 import { ArtistForm } from "../forms/ArtistForm";
 import { AlbumForm } from "../forms/AlbumForm";
+import { SongForm } from "../forms/SongForm";
 
 export const OptionsToolBar = () => {
   const [open, setOpen] = useState(false);
@@ -30,7 +31,11 @@ export const OptionsToolBar = () => {
         >
           <CreateNewFolder color="secondary" />
         </IconButton>
-        <IconButton >
+        <IconButton
+          onClick={() => {
+            openForm(<SongForm closeModal={closeForm} />);
+          }}
+        >
           <LibraryAdd color="secondary" />
         </IconButton>
       </Grid>
