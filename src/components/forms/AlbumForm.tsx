@@ -5,6 +5,7 @@ import { forwardRef, useCallback, useEffect, useState } from "react";
 import AlbumRepository from "../../storage/album.repository";
 import { Album } from "../../types/types";
 import ArtistRepository from "../../storage/artist.repository";
+import { useAlbumStore } from "../stores/AlbumStore";
 
 interface AlbumFormProps {
   closeModal: () => void;
@@ -16,9 +17,9 @@ export const AlbumForm: React.FC<AlbumFormProps> = forwardRef(({ closeModal }, r
   const [artist, setArtist] = useState<number>(0);
   const [image, setImage] = useState<string>("");
   const [genres, setGenres] = useState<string[]>([]);
-  const [webpage, setWebpage] = useState<string>("");
   const [year, setYear] = useState<number | string>('');
   const [artists, setArtists] = useState<{ id: number, name: string }[]>([]);
+  const { setAlbums } = useAlbumStore();
 
   useEffect(() => {
     const artistRepository = new ArtistRepository();
@@ -38,6 +39,7 @@ export const AlbumForm: React.FC<AlbumFormProps> = forwardRef(({ closeModal }, r
 
     const albumRepository = new AlbumRepository();
     albumRepository.addAlbum(album);
+    setAlbums(albumRepository.getAlbums());
     closeModal();
   };
 
@@ -94,13 +96,6 @@ export const AlbumForm: React.FC<AlbumFormProps> = forwardRef(({ closeModal }, r
         label="Image"
         value={image}
         onChange={(e) => setImage(e.target.value)}
-        fullWidth
-      />
-      <TextField
-        required
-        label="Webpage"
-        value={webpage}
-        onChange={(e) => setWebpage(e.target.value)}
         fullWidth
       />
     </FormBaseContainer>

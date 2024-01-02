@@ -3,13 +3,14 @@ import { Album, Artist } from "../../types/types";
 import { AlbumCard } from "./AlbumCard";
 import { Paper, Stack, Typography } from "@mui/material";
 import AlbumRepository from "../../storage/album.repository";
+import { useAlbumStore } from "../stores/AlbumStore";
 
 interface AlbumListProps {
   artist: Artist | null;
 }
 
 export const AlbumList: React.FC<AlbumListProps> = ({ artist }) => {
-  const [albums, setAlbums] = React.useState<Album[]>([]);
+  const {albums, setAlbums} = useAlbumStore();
 
   useEffect(() => {
     const repository = new AlbumRepository()

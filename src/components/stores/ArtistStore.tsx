@@ -9,4 +9,4 @@ type ArtistStore = {
 export const useArtistStore = create<ArtistStore>()((set) => ({
   artists: [],
   setArtists: (artists) => set(() => ({ artists: artists }))
-}))
+}));
