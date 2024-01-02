@@ -11,7 +11,7 @@ interface ArtistFormProps {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const ArtistForm = forwardRef(({ closeModal }: ArtistFormProps, ref) => {
+export const ArtistForm: React.FC<ArtistFormProps> = forwardRef(({ closeModal }, ref) => {
   const [name, setName] = useState<string>("");
   const [genres, setGenres] = useState<string[]>([]);
   const [members, setMembers] = useState<string[]>([]);
@@ -52,8 +52,16 @@ export const ArtistForm = forwardRef(({ closeModal }: ArtistFormProps, ref) => {
         fullWidth
       />
 
-      <MultipleStringInput strings={genres} setStringArray={setGenres} inputName='genre' />
-      <MultipleStringInput strings={members} setStringArray={setMembers} inputName='member' />
+      <MultipleStringInput
+        strings={genres}
+        setStringArray={setGenres}
+        inputName='genre'
+      />
+      <MultipleStringInput
+        strings={members}
+        setStringArray={setMembers}
+        inputName='member'
+      />
 
       <Stack
         direction={"row"}

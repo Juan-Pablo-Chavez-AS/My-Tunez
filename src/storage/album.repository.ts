@@ -26,8 +26,11 @@ export default class AlbumRepository {
         return this.albumList.find((album) => album.id === id);
     }
 
-    addAlbum(album: Album): void {
-        this.albumList.push(album);
+    addAlbum(album: Partial<Album>): void {
+        album.id = this.albumList.reduce((currentMax, album) => {
+            return Math.max(currentMax, album.id);
+        }, 0) + 1;
+        this.albumList.push(album as Album);
         localStorage.setItem('albums', JSON.stringify(this.albumList));
     }
 

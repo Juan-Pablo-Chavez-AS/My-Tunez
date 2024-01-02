@@ -17,9 +17,10 @@ export interface Song {
 }
 
 export interface Album {
-  id?: number
+  id: number
   title: string
   artist: number
+  genres: string[]
   year: number
   image: string
   songs: Song[]

@@ -62,6 +62,11 @@ const theme = createTheme({
         size: "small"
       },
     },
+    MuiSelect: {
+      defaultProps: {
+        size: "small"
+      },
+    },
   }
 });
 

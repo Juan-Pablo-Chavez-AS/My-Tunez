@@ -2,6 +2,7 @@ import { CreateNewFolder, LibraryAdd, PersonAdd } from "@mui/icons-material";
 import { Button, Grid, IconButton, Modal, Stack } from "@mui/material";
 import { ReactElement, useState } from "react";
 import { ArtistForm } from "../forms/ArtistForm";
+import { AlbumForm } from "../forms/AlbumForm";
 
 export const OptionsToolBar = () => {
   const [open, setOpen] = useState(false);
@@ -15,12 +16,18 @@ export const OptionsToolBar = () => {
   return <>
     <Grid container alignItems={"center"} bgcolor={"#242424"} height={"100%"}>
       <Grid item component={Stack} xl={3} gap={1} justifyContent={"end"}>
-        <IconButton onClick={() => {
-          openForm(<ArtistForm closeModal={closeForm} />);
-        }}>
+        <IconButton
+          onClick={() => {
+            openForm(<ArtistForm closeModal={closeForm} />);
+          }}
+        >
           <PersonAdd color="secondary" />
         </IconButton>
-        <IconButton >
+        <IconButton
+          onClick={() => {
+            openForm(<AlbumForm closeModal={closeForm} />);
+          }}
+        >
           <CreateNewFolder color="secondary" />
         </IconButton>
         <IconButton >
