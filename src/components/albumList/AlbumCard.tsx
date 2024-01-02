@@ -1,4 +1,5 @@
-import React from "react";
+import { SongList } from "../songList/SongList";
+import React, { useEffect } from "react";
 import { Album, Song } from "../../types/types";
 import { Card, CardContent, CardMedia, Paper, Typography } from "@mui/material";
 import SongRepository from "../../storage/song.repository";
@@ -11,7 +12,7 @@ interface AlbumCardProps {
 export const AlbumCard: React.FC<AlbumCardProps> = ({ album }) => {
   const [songs, setSongs] = React.useState<Song[]>([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const songRepository = new SongRepository();
     setSongs(songRepository.getByAlbumId(album.id));
   }, []);
@@ -23,12 +24,9 @@ export const AlbumCard: React.FC<AlbumCardProps> = ({ album }) => {
       image={album.image}
       alt={album.title}
     />
-    <CardContent component={Paper} sx={{ width: "100%", marginLeft: 5}} elevation={10}>
-      <Typography>{album.title}</Typography>
-      {songs.map((song, index) => {
-        return <Typography key={index}>{song.title}</Typography>
-        })
-      }
+    <CardContent component={Paper} sx={{ width: "100%", paddingLeft: 1, height: 200}} elevation={10} >
+      <Typography fontWeight={"bold"} fontSize={"1.3rem"}>{album.title}</Typography>
+        <SongList songs={songs} />
     </CardContent>
   </Card>;
 }
