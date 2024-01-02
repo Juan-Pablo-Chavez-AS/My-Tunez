@@ -1,4 +1,5 @@
-import { Button, ClickAwayListener, Stack, Typography } from "@mui/material";
+import { Close } from "@mui/icons-material";
+import { Button, IconButton, Stack, Typography } from "@mui/material";
 
 interface FormBaseContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string
@@ -17,30 +18,49 @@ export const FormBaseContainer: React.FC<FormBaseContainerProps> = ({ children, 
         width={"100%"}
         height={"100vh"}
       >
-        <ClickAwayListener onClickAway={closeModal}>
-          <Stack
-            direction={"row"}
-            spacing={1}
-            gap={2}
-            alignItems={"center"}
-            justifyContent={"center"}
-            width={"40%"}
-            bgcolor={"#323232"}
-            p={2}
-            borderRadius={2}
-            flexWrap={"wrap"}
-          >
-            <Typography variant={"h3"} color={"white"}>{title}</Typography>
-            {children}
-            <Button
-              type='submit'
-              variant='contained'
-              fullWidth
+        <Stack
+          direction={"row"}
+          spacing={1}
+          gap={2}
+          alignItems={"center"}
+          justifyContent={"center"}
+          width={"40%"}
+          bgcolor={"#323232"}
+          p={2}
+          borderRadius={2}
+          flexWrap={"wrap"}
+          position={"relative"}
+          maxHeight={"90vh"}
+          overflow={"auto"}
+          sx={{
+            overflowX: "hidden"
+          }}
+        >
+            <IconButton
+              onClick={closeModal}
+              sx={{
+                position: "absolute",
+                top: 5,
+                right: 5
+              }}
             >
-              {buttonText}
-            </Button>
-          </Stack>
-        </ClickAwayListener>
+              <Close
+              color={"secondary"}
+              sx={{
+                fontSize: 40
+              }}
+              />
+            </IconButton>
+          <Typography variant={"h3"} width={"100%"} align="center">{title}</Typography>
+          {children}
+          <Button
+            type='submit'
+            variant='contained'
+            fullWidth
+          >
+            {buttonText}
+          </Button>
+        </Stack>
       </Stack>
     </form>
   )
