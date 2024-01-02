@@ -23,7 +23,7 @@ export default class SongRepository {
 
     addSong(song: Partial<Song>): void {
         song.id = this.songList.reduce((currentMax, song) => {
-            return Math.max(currentMax, song.id);
+            return Math.max(currentMax || 0, song.id);
         }, 0) + 1;
         this.songList.push(song as Song);
         localStorage.setItem('songs', JSON.stringify(this.songList));
