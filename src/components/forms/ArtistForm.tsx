@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef, useEffect, useState } from 'react';
 import { Artist } from '../../types/types';
 import ArtistRepository from '../../storage/artist.repository';
 import { Stack, TextField } from '@mui/material';
@@ -17,6 +17,7 @@ export const ArtistForm: React.FC<ArtistFormProps> = forwardRef(({ closeModal },
   const [members, setMembers] = useState<string[]>([]);
   const [image, setImage] = useState<string>("");
   const [webpage, setWebpage] = useState<string>("");
+  const [ isComplete, setIsComplete ] = useState<boolean>(false);
   const { setArtists } = useArtistStore();
 
 
@@ -37,12 +38,17 @@ export const ArtistForm: React.FC<ArtistFormProps> = forwardRef(({ closeModal },
     closeModal();
   };
 
+  useEffect(() => {
+    setIsComplete(name !== '' && image !== '' && webpage !== '' && genres.length > 0 && members.length > 0);
+  }, [name, image, webpage, genres, members]);
+
   return (
     <FormBaseContainer
       title={"Create artist"}
       buttonText={"Add artist"}
       closeModal={closeModal}
       handleSubmit={handleSubmit}
+      canSubmit={isComplete}
     >
       <TextField
         required

@@ -18,6 +18,7 @@ export const SongForm: React.FC<SongFormProps> = forwardRef(({ closeModal }, ref
   const [albums, setAlbums] = useState<{ id: number, label: string }[]>([]);
   const [genre, setGenre] = useState<string>("");
   const [file, setFile] = useState<string>("");
+  const [ isComplete, setIsComplete ] = useState<boolean>(false);
   const { setSongs } = useSongStore();
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -41,6 +42,10 @@ export const SongForm: React.FC<SongFormProps> = forwardRef(({ closeModal }, ref
     setAlbums(albumRepository.getAlbums().map(album => { return { id: album.id, label: album.title } }));
   }, []);
 
+  useEffect(() => {
+    setIsComplete(title !== '' && file !== '' && genre !== '' && album !== 0);
+  }, [title, file, genre, album]);
+
   const albumFinder = useCallback((id: number) => {
     return albums.find(singleAlbum => singleAlbum.id === id)
   }, [albums])
@@ -51,6 +56,7 @@ export const SongForm: React.FC<SongFormProps> = forwardRef(({ closeModal }, ref
       buttonText={"Add song"}
       closeModal={closeModal}
       handleSubmit={handleSubmit}
+      canSubmit={isComplete}
     >
       <TextField
         required

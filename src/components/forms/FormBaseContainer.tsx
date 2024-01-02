@@ -6,9 +6,10 @@ interface FormBaseContainerProps extends React.HTMLAttributes<HTMLDivElement> {
   buttonText: string
   closeModal: () => void
   handleSubmit: (e: React.FormEvent) => void
+  canSubmit: boolean
 }
 
-export const FormBaseContainer: React.FC<FormBaseContainerProps> = ({ children, buttonText, title, handleSubmit, closeModal }) => {
+export const FormBaseContainer: React.FC<FormBaseContainerProps> = ({ children, buttonText, title, handleSubmit, closeModal, canSubmit }) => {
   return (
     <form onSubmit={handleSubmit}>
       <Stack
@@ -58,6 +59,7 @@ export const FormBaseContainer: React.FC<FormBaseContainerProps> = ({ children, 
               type='submit'
               variant='contained'
               fullWidth
+              disabled={!canSubmit}
             >
               {buttonText}
             </Button>

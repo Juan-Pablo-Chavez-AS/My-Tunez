@@ -19,12 +19,17 @@ export const AlbumForm: React.FC<AlbumFormProps> = forwardRef(({ closeModal }, r
   const [genres, setGenres] = useState<string[]>([]);
   const [year, setYear] = useState<number | string>('');
   const [artists, setArtists] = useState<{ id: number, name: string }[]>([]);
+  const [ isComplete, setIsComplete ] = useState<boolean>(false);
   const { setAlbums } = useAlbumStore();
 
   useEffect(() => {
     const artistRepository = new ArtistRepository();
     setArtists(artistRepository.getArtists().map(artist => { return { id: artist.id, name: artist.name } }));
   }, []);
+
+  useEffect(() => {
+    setIsComplete(title !== '' && image !== '' && year !== '' && genres.length > 0 && artist !== 0);
+  }, [title, image, year, genres, artist]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,6 +58,7 @@ export const AlbumForm: React.FC<AlbumFormProps> = forwardRef(({ closeModal }, r
       buttonText={"Add album"}
       closeModal={closeModal}
       handleSubmit={handleSubmit}
+      canSubmit={isComplete}
     >
       <TextField
         required
