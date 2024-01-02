@@ -11,10 +11,10 @@ export const SongList: React.FC<SongListProps> = ({
 }) => {
   return <Stack height={"90%"} boxShadow={24} overflow={"auto"} gap={1} p={1}>
     {
-      songs.map((song, index) => {
+      songs.map((song) => {
         return (
           <Box
-            key={index}
+            key={song.id}
             border={1}
             borderColor={"#555555"}
             borderRadius={1}

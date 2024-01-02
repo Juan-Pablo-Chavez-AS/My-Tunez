@@ -24,8 +24,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ setArtist }) => {
         ? <Typography textAlign={"center"} fontSize={"2.5rem"}>No artists</Typography>
         : <ArtistCard setArtist={setArtist} artist={null}/>
       }
-      {artists.map((artist: Artist, index: number) => {
-        return <ArtistCard setArtist={setArtist} artist={artist} key={index}/>
+      {artists.map((artist: Artist) => {
+        return <ArtistCard setArtist={setArtist} artist={artist} key={artist.id}/>
       })}
     </Stack>
   )

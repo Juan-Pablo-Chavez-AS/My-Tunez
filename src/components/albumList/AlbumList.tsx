@@ -20,8 +20,8 @@ export const AlbumList: React.FC<AlbumListProps> = ({ artist }) => {
     {
       albums.length === 0 && <Typography textAlign={"center"} fontSize={"2.5rem"}>No albums</Typography>
     }
-    {albums.map((album: Album, index: number) => {
-      return <AlbumCard key={index} album={album} />
+    {albums.map((album: Album) => {
+      return <AlbumCard key={album.id} album={album} />
     })}
   </Stack>;
 };
