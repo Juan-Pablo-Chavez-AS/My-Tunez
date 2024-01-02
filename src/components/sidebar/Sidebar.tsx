@@ -10,7 +10,7 @@ interface SidebarProps {
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({ setArtist }) => {
-  const [artists, setArtists] = useArtistStore(state => [state.artists, state.setArtists])
+  const {artists, setArtists} = useArtistStore();
 
   useEffect(() => {
     const repository = new ArtistRepository()

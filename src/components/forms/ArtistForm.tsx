@@ -17,7 +17,7 @@ export const ArtistForm: React.FC<ArtistFormProps> = forwardRef(({ closeModal },
   const [members, setMembers] = useState<string[]>([]);
   const [image, setImage] = useState<string>("");
   const [webpage, setWebpage] = useState<string>("");
-  const setArtist = useArtistStore(state => state.setArtists);
+  const { setArtists } = useArtistStore();
 
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -33,7 +33,7 @@ export const ArtistForm: React.FC<ArtistFormProps> = forwardRef(({ closeModal },
 
     const artistRepository = new ArtistRepository();
     artistRepository.addArtist(artist);
-    setArtist(artistRepository.getArtists());
+    setArtists(artistRepository.getArtists());
     closeModal();
   };
 
