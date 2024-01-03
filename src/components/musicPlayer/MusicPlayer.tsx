@@ -42,6 +42,7 @@ export const MusicPlayer = () => {
       onPause={() => setIsPlaying(false)}
       onClickPrevious={previousSong}
       onClickNext={nextSong}
+      onEnded={nextSong}
       customAdditionalControls={[
         <IconButton onClick={clearCurrentSong}>
           <StopCircleOutlined/>
