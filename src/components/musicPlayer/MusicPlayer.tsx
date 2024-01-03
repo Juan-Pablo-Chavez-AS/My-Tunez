@@ -1,21 +1,33 @@
-import { Card, Typography } from '@mui/material';
+import { Card, IconButton, Typography } from '@mui/material';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import { useCurrentPlaylistStore } from '../../stores/CurrentPlaylistStore';
+import { createRef, useEffect } from 'react';
 
 export const MusicPlayer = () => {
-  const { currentSong } = useCurrentPlaylistStore();
+  const { currentSong, isPlaying, setIsPlaying } = useCurrentPlaylistStore();
+  const audioRef = createRef<AudioPlayer>();
+
+  useEffect(() => {
+    if (isPlaying) {
+      audioRef.current?.audio.current?.play();
+    } else {
+      audioRef.current?.audio.current?.pause();
+    }
+  }, [isPlaying])
 
   return <Card elevation={10} sx={{ width: "50%", height: "100%", p: 0.5, display: "flex", justifyContent: "center", alignItems: "center"}} >
     {
       currentSong ?
       <AudioPlayer
       src={currentSong.file}
+      autoPlay
       autoPlayAfterSrcChange
       className='music-player'
       showSkipControls
-      onPlay={() => console.log("onPlay")}
-      onError={(e) => console.log(e)}
+      onPlay={() => setIsPlaying(true)}
+      onPause={() => setIsPlaying(false)}
+      ref={audioRef}
       />
       :
       <Typography textAlign={"center"} fontSize={32}>
