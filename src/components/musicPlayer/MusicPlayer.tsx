@@ -3,6 +3,7 @@ import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import { useCurrentPlaylistStore } from '../../stores/CurrentPlaylistStore';
 import { createRef, useEffect } from 'react';
+import { ShuffleSharp, StopCircleOutlined } from '@mui/icons-material';
 
 export const MusicPlayer = () => {
   const { currentSong, isPlaying, setIsPlaying } = useCurrentPlaylistStore();
@@ -27,6 +28,14 @@ export const MusicPlayer = () => {
       showSkipControls
       onPlay={() => setIsPlaying(true)}
       onPause={() => setIsPlaying(false)}
+      customAdditionalControls={[
+        <IconButton>
+          <StopCircleOutlined/>
+        </IconButton>,
+        <IconButton>
+          <ShuffleSharp/>
+        </IconButton>
+      ]}
       ref={audioRef}
       />
       :
