@@ -40,8 +40,9 @@ export const CurrentSongCard = () => {
         </CardContent>
       </Stack>
       :
-      <>
-      </>
+      <Typography width={"20%"} textAlign={"center"}>
+        No song selected
+      </Typography>
     }
   </>
   )
