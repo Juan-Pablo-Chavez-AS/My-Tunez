@@ -6,7 +6,7 @@ import AlbumRepository from "../../storage/album.repository";
 import { Album } from "../../types/types";
 import ArtistRepository from "../../storage/artist.repository";
 import { useAlbumStore } from "../stores/AlbumStore";
-import { useSuccessNotification } from "../stores/SuccesNotificationStore";
+import { useSuccessNotification } from "../stores/SuccessNotificationStore";
 
 interface AlbumFormProps {
   closeModal: () => void;

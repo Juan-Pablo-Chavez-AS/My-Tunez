@@ -5,7 +5,7 @@ import SongRepository from "../../storage/song.repository";
 import { forwardRef, useCallback, useEffect, useState } from "react";
 import AlbumRepository from "../../storage/album.repository";
 import { useSongStore } from "../stores/SongStore";
-import { useSuccessNotification } from "../stores/SuccesNotificationStore";
+import { useSuccessNotification } from "../stores/SuccessNotificationStore";
 
 
 interface SongFormProps {

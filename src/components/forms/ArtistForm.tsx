@@ -5,7 +5,7 @@ import { Stack, TextField } from '@mui/material';
 import { MultipleStringInput } from './MultipleStringInput';
 import { useArtistStore } from '../stores/ArtistStore';
 import { FormBaseContainer } from './FormBaseContainer';
-import { useSuccessNotification } from '../stores/SuccesNotificationStore';
+import { useSuccessNotification } from '../stores/SuccessNotificationStore';
 
 interface ArtistFormProps {
   closeModal: () => void;
