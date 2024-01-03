@@ -6,7 +6,7 @@ import { createRef, useEffect } from 'react';
 import { ShuffleSharp, StopCircleOutlined } from '@mui/icons-material';
 
 export const MusicPlayer = () => {
-  const { currentSong, isPlaying, setIsPlaying } = useCurrentPlaylistStore();
+  const { currentSong, isPlaying, setIsPlaying, setPreviousSong, setNextSong, clearCurrentSong } = useCurrentPlaylistStore();
   const audioRef = createRef<AudioPlayer>();
 
   useEffect(() => {
@@ -16,6 +16,18 @@ export const MusicPlayer = () => {
       audioRef.current?.audio.current?.pause();
     }
   }, [isPlaying])
+
+  const previousSong = () => {
+    if (audioRef.current && audioRef.current.audio.current && audioRef.current.audio.current.currentTime < 5) {
+      audioRef.current.audio.current.currentTime = 0;
+    } else {
+      setPreviousSong();
+    }
+  }
+
+  const nextSong = () => {
+    setNextSong();
+  }
 
   return <Card elevation={10} sx={{ width: "50%", height: "100%", p: 0.5, display: "flex", justifyContent: "center", alignItems: "center"}} >
     {
@@ -28,8 +40,10 @@ export const MusicPlayer = () => {
       showSkipControls
       onPlay={() => setIsPlaying(true)}
       onPause={() => setIsPlaying(false)}
+      onClickPrevious={previousSong}
+      onClickNext={nextSong}
       customAdditionalControls={[
-        <IconButton>
+        <IconButton onClick={clearCurrentSong}>
           <StopCircleOutlined/>
         </IconButton>,
         <IconButton>
@@ -43,19 +57,5 @@ export const MusicPlayer = () => {
         No song selected
       </Typography>
     }
-
-    {/* <audio
-      src="https://file-examples.com/storage/fe4485c9e865956069e3369/2017/11/file_example_MP3_1MG.mp3"
-      autoPlay
-      controls
-      style={{
-        backgroundColor: "#242424",
-        color: "white",
-        borderColor: "red",
-        borderWidth: "10px",
-        flexGrow: 1,
-        maxHeight: "100%",
-      }}
-    /> */}
   </Card>
 }
