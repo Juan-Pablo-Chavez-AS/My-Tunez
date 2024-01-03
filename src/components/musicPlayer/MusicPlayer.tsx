@@ -29,7 +29,7 @@ export const MusicPlayer = () => {
     setNextSong();
   }
 
-  return <Card elevation={10} sx={{ width: "50%", height: "100%", p: 0.5, display: "flex", justifyContent: "center", alignItems: "center"}} >
+  return <Card elevation={10} sx={{ width: "40%", height: "100%", p: 0.5, display: "flex", justifyContent: "center", alignItems: "center"}} >
     {
       currentSong ?
       <AudioPlayer

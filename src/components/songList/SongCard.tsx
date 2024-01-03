@@ -32,10 +32,13 @@ export const SongCard = ({ song }: SongCardProps) => {
       }}
       onClick={() => setCurrentSong(song)}
     >
-      {currentSong?.id === song.id && isPlaying && (
+      {currentSong?.id === song.id && isPlaying &&
         <PauseCircleOutline color="success" fontSize={"small"} />
+      }
+      {isHovered && (currentSong?.id !== song.id)  && (
+        <PlayCircleFilledOutlined color="success" fontSize={"small"} />
       )}
-      {isHovered && (currentSong?.id !== song.id || !isPlaying)  && (
+      {currentSong?.id === song.id && !isPlaying  && (
         <PlayCircleFilledOutlined color="success" fontSize={"small"} />
       )}
       <Typography display={"inline"}>{song.title}</Typography>

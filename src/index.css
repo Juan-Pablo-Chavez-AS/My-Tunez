@@ -51,10 +51,10 @@ body {
   background-color: #242424;
 }
 
-.rhap_stacked .rhap_controls-section {
-  margin-top: 0;
-}
-
 .rhap_volume-indicator, .rhap_progress-indicator, .rhap_progress-filled {
   background-color: #1dd262;
+}
+
+.rhap_progress-container {
+  width: 70%;
 }

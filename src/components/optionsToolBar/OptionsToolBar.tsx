@@ -16,7 +16,7 @@ export const OptionsToolBar = () => {
 
   return <>
     <Grid container alignItems={"center"} bgcolor={"#242424"} height={"100%"}>
-      <Grid item component={Stack} xl={3} gap={1} justifyContent={"end"}>
+      <Grid item component={Stack} xl={3} xs={3} gap={1} justifyContent={"end"}>
         <IconButton
           onClick={() => {
             openForm(<ArtistForm closeModal={closeForm} />);
@@ -39,11 +39,11 @@ export const OptionsToolBar = () => {
           <LibraryAdd color="secondary" />
         </IconButton>
       </Grid>
-      <Grid item component={Stack} xl={5} gap={1} justifyContent={"center"}>
+      <Grid item component={Stack} xl={5} xs={5} gap={1} justifyContent={"center"}>
         <Button variant={"contained"} color="primary">Albums</Button>
         <Button variant={"contained"} color="secondary">Songs</Button>
       </Grid>
-      <Grid item component={Stack} xl={4} gap={1} >
+      <Grid item component={Stack} xl={4} xs={4} gap={1} >
         <Button variant={"outlined"} color="secondary">Genres</Button>
         <Button variant={"outlined"} color="secondary">Settings</Button>
       </Grid>
