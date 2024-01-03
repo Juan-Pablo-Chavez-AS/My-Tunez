@@ -5,6 +5,7 @@ import SongRepository from "../../storage/song.repository";
 import { forwardRef, useCallback, useEffect, useState } from "react";
 import AlbumRepository from "../../storage/album.repository";
 import { useSongStore } from "../stores/SongStore";
+import { useSuccessNotification } from "../stores/SuccesNotificationStore";
 
 
 interface SongFormProps {
@@ -20,6 +21,7 @@ export const SongForm: React.FC<SongFormProps> = forwardRef(({ closeModal }, ref
   const [file, setFile] = useState<string>("");
   const [ isComplete, setIsComplete ] = useState<boolean>(false);
   const { setSongs } = useSongStore();
+  const { openNotification } = useSuccessNotification();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,6 +36,7 @@ export const SongForm: React.FC<SongFormProps> = forwardRef(({ closeModal }, ref
     const songRepository = new SongRepository();
     songRepository.addSong(song);
     setSongs(songRepository.getSongs());
+    openNotification("Song Succesfully added!");
     closeModal();
   };
 

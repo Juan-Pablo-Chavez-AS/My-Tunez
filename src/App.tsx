@@ -28,7 +28,7 @@ const App = () => {
           <AlbumList artist={currentArtist} />
         </Grid>
       </Grid>
-      <Snackbar open={open} anchorOrigin={{ vertical: "top", horizontal: "center"}} autoHideDuration={6000}>
+      <Snackbar open={open} anchorOrigin={{ vertical: "top", horizontal: "center"}} autoHideDuration={5000}>
         <Alert onClose={closeNotification} severity="success" variant='filled' sx={{ width: '100%' }}>
           {text}
         </Alert>

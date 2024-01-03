@@ -6,6 +6,7 @@ import AlbumRepository from "../../storage/album.repository";
 import { Album } from "../../types/types";
 import ArtistRepository from "../../storage/artist.repository";
 import { useAlbumStore } from "../stores/AlbumStore";
+import { useSuccessNotification } from "../stores/SuccesNotificationStore";
 
 interface AlbumFormProps {
   closeModal: () => void;
@@ -21,6 +22,7 @@ export const AlbumForm: React.FC<AlbumFormProps> = forwardRef(({ closeModal }, r
   const [artists, setArtists] = useState<{ id: number, name: string }[]>([]);
   const [ isComplete, setIsComplete ] = useState<boolean>(false);
   const { setAlbums } = useAlbumStore();
+  const { openNotification } = useSuccessNotification();
 
   useEffect(() => {
     const artistRepository = new ArtistRepository();
@@ -45,6 +47,7 @@ export const AlbumForm: React.FC<AlbumFormProps> = forwardRef(({ closeModal }, r
     const albumRepository = new AlbumRepository();
     albumRepository.addAlbum(album);
     setAlbums(albumRepository.getAlbums());
+    openNotification("Album Succesfully added!");
     closeModal();
   };
 
