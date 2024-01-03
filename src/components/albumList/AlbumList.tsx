@@ -3,7 +3,7 @@ import { Album, Artist } from "../../types/types";
 import { AlbumCard } from "./AlbumCard";
 import { Paper, Stack, Typography } from "@mui/material";
 import AlbumRepository from "../../storage/album.repository";
-import { useAlbumStore } from "../stores/AlbumStore";
+import { useAlbumStore } from "../../stores/AlbumStore";
 
 interface AlbumListProps {
   artist: Artist | null;

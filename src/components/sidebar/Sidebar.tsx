@@ -3,7 +3,7 @@ import { Paper, Stack, Typography } from "@mui/material"
 import { Artist } from "../../types/types"
 import React, { useEffect } from "react";
 import ArtistRepository from "../../storage/artist.repository";
-import { useArtistStore } from "../stores/ArtistStore";
+import { useArtistStore } from "../../stores/ArtistStore";
 
 interface SidebarProps {
   setArtist: (artist: Artist | null) => void

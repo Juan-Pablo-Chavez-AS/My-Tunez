@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Album, Song } from "../../types/types";
 import { Card, CardContent, CardMedia, Paper, Typography } from "@mui/material";
 import SongRepository from "../../storage/song.repository";
-import { useSongStore } from "../stores/SongStore";
+import { useSongStore } from "../../stores/SongStore";
 
 
 interface AlbumCardProps {

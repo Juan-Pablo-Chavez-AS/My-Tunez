@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { Song } from '../../types/types'
+import { Song } from '../types/types'
 
 type AlbumStore = {
   songs: Song[]

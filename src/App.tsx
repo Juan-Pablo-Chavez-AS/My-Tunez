@@ -6,7 +6,7 @@ import { OptionsToolBar } from './components/optionsToolBar/OptionsToolBar'
 import { useState } from 'react'
 import { Artist } from './types/types'
 import { AlbumList } from './components/albumList/AlbumList'
-import { useSuccessNotification } from './components/stores/SuccessNotificationStore'
+import { useSuccessNotification } from './stores/SuccessNotificationStore'
 
 const App = () => {
   const [currentArtist, setCurrentArtist] = useState<Artist | null>(null)
