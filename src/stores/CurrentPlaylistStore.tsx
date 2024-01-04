@@ -17,6 +17,10 @@ type CurrentPlaylistStore = {
   toggleShuffleOff: () => void
 }
 
+const songsShuffle = (array: Song[]) => {
+  return [...array].sort(() => Math.random() - 0.5)
+}
+
 export const useCurrentPlaylistStore = create<CurrentPlaylistStore>()((set) => ({
   currentSong: null,
   currentPlaylist: [],
@@ -31,9 +35,10 @@ export const useCurrentPlaylistStore = create<CurrentPlaylistStore>()((set) => (
 
     const songRepository = new SongRepository()
     const playlist = songRepository.getByAlbumId(song.album)
-    return { currentSong: song, isPlaying: true, currentPlaylist: playlist, shuffle: false, shufflePlaylist: [] }
+    const shufflePlaylist = state.shuffle ? songsShuffle(playlist) : []
+    return { currentSong: song, isPlaying: true, currentPlaylist: playlist, shufflePlaylist: shufflePlaylist }
   }),
-  clearCurrentSong: () => set(() => ({ currentSong: null, setShuffle: false, shufflePlaylist: [] })),
+  clearCurrentSong: () => set(() => ({ currentSong: null, shuffle: false, shufflePlaylist: [] })),
   setPreviousSong: () => set((state) => {
     const playlist = state.shuffle ? state.shufflePlaylist : state.currentPlaylist
 
