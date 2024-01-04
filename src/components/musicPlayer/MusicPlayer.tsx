@@ -1,4 +1,4 @@
-import { Card, IconButton, Typography } from '@mui/material';
+import { Card, IconButton } from '@mui/material';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import { useCurrentPlaylistStore } from '../../stores/CurrentPlaylistStore';
@@ -40,37 +40,30 @@ export const MusicPlayer = () => {
   }
 
   return <Card elevation={10} sx={{ width: "40%", height: "100%", p: 0.5, display: "flex", justifyContent: "center", alignItems: "center"}} >
-    {
-      currentSong ?
-      <AudioPlayer
-      src={currentSong.file}
-      autoPlay
-      autoPlayAfterSrcChange
-      className='music-player'
-      showSkipControls
-      onPlay={() => setIsPlaying(true)}
-      onPause={() => setIsPlaying(false)}
-      onClickPrevious={previousSong}
-      onClickNext={nextSong}
-      onEnded={nextSong}
-      customAdditionalControls={[
-        <IconButton onClick={clearCurrentSong}>
-          <StopCircleOutlined/>
-        </IconButton>,
-        <IconButton onClick={ shuffle ? toggleShuffleOff : toggleShuffleOn}>
-          {shuffle ?
-            <ShuffleSharp/>
-            :
-            <ArrowRightAlt/>
-          }
-        </IconButton>
-      ]}
-      ref={audioRef}
-      />
-      :
-      <Typography textAlign={"center"} fontSize={32}>
-        No song selected
-      </Typography>
-    }
+    <AudioPlayer
+    src={currentSong?.file ?? ''}
+    autoPlay
+    autoPlayAfterSrcChange
+    className='music-player'
+    showSkipControls
+    onPlay={() => setIsPlaying(true)}
+    onPause={() => setIsPlaying(false)}
+    onClickPrevious={previousSong}
+    onClickNext={nextSong}
+    onEnded={nextSong}
+    customAdditionalControls={[
+      <IconButton onClick={clearCurrentSong}>
+        <StopCircleOutlined/>
+      </IconButton>,
+      <IconButton onClick={ shuffle ? toggleShuffleOff : toggleShuffleOn}>
+        {shuffle ?
+          <ShuffleSharp/>
+          :
+          <ArrowRightAlt/>
+        }
+      </IconButton>
+    ]}
+    ref={audioRef}
+    />
   </Card>
 }
