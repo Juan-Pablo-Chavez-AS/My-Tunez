@@ -28,7 +28,7 @@ export const MusicPlayer = () => {
   }, [isPlaying])
 
   const previousSong = () => {
-    if (audioRef.current && audioRef.current.audio.current && audioRef.current.audio.current.currentTime < 5) {
+    if (audioRef.current && audioRef.current.audio.current && audioRef.current.audio.current.currentTime >= 5) {
       audioRef.current.audio.current.currentTime = 0;
     } else {
       setPreviousSong();
