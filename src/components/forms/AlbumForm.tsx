@@ -12,8 +12,7 @@ interface AlbumFormProps {
   closeModal: () => void;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const AlbumForm: React.FC<AlbumFormProps> = forwardRef(({ closeModal }, ref) => {
+export const AlbumForm: React.FC<AlbumFormProps> = forwardRef(({ closeModal }) => {
   const [title, setTitle] = useState<string>("");
   const [artist, setArtist] = useState<number>(0);
   const [image, setImage] = useState<string>("");

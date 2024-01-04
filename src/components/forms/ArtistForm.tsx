@@ -11,8 +11,7 @@ interface ArtistFormProps {
   closeModal: () => void;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const ArtistForm: React.FC<ArtistFormProps> = forwardRef(({ closeModal }, ref) => {
+export const ArtistForm: React.FC<ArtistFormProps> = forwardRef(({ closeModal }) => {
   const [name, setName] = useState<string>("");
   const [genres, setGenres] = useState<string[]>([]);
   const [members, setMembers] = useState<string[]>([]);

@@ -51,6 +51,7 @@ export const MusicPlayer = () => {
       onClickPrevious={previousSong}
       onClickNext={nextSong}
       onEnded={nextSong}
+      progressJumpStep={10000}
       customAdditionalControls={[
         <IconButton onClick={clearCurrentSong}>
           <StopCircleOutlined />

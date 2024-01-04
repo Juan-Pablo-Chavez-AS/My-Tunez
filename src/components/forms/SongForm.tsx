@@ -12,8 +12,7 @@ interface SongFormProps {
   closeModal: () => void;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const SongForm: React.FC<SongFormProps> = forwardRef(({ closeModal }, ref) => {
+export const SongForm: React.FC<SongFormProps> = forwardRef(({ closeModal }) => {
   const [title, setTitle] = useState<string>("");
   const [album, setAlbum] = useState<number>(0);
   const [albums, setAlbums] = useState<{ id: number, label: string }[]>([]);
