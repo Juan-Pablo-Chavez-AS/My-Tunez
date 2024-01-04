@@ -1,4 +1,4 @@
-name: Node.js eslint
+name: Node.js build
 
 on: [push]
 
