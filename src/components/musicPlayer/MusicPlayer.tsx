@@ -3,10 +3,20 @@ import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import { useCurrentPlaylistStore } from '../../stores/CurrentPlaylistStore';
 import { createRef, useEffect } from 'react';
-import { ShuffleSharp, StopCircleOutlined } from '@mui/icons-material';
+import { ArrowRightAlt, ShuffleSharp, StopCircleOutlined } from '@mui/icons-material';
 
 export const MusicPlayer = () => {
-  const { currentSong, isPlaying, setIsPlaying, setPreviousSong, setNextSong, clearCurrentSong } = useCurrentPlaylistStore();
+  const {
+    currentSong,
+    isPlaying,
+    setIsPlaying,
+    setPreviousSong,
+    setNextSong,
+    clearCurrentSong,
+    shuffle,
+    toggleShuffleOn,
+    toggleShuffleOff
+  } = useCurrentPlaylistStore();
   const audioRef = createRef<AudioPlayer>();
 
   useEffect(() => {
@@ -47,8 +57,12 @@ export const MusicPlayer = () => {
         <IconButton onClick={clearCurrentSong}>
           <StopCircleOutlined/>
         </IconButton>,
-        <IconButton>
-          <ShuffleSharp/>
+        <IconButton onClick={ shuffle ? toggleShuffleOff : toggleShuffleOn}>
+          {shuffle ?
+            <ShuffleSharp/>
+            :
+            <ArrowRightAlt/>
+          }
         </IconButton>
       ]}
       ref={audioRef}
