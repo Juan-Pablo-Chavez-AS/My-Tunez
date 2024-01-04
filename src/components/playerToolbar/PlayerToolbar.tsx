@@ -19,7 +19,7 @@ export const PlayerToolbar = () => {
     >
       <CurrentSongCard />
       <MusicPlayer />
-      <Typography width={"20%"} display={"block"} borderColor={"black"} textAlign={"center"}>Search bar</Typography>
+      <Typography width={"20%"} display={"block"} borderColor={"black"} textAlign={"center"}></Typography>
     </Stack>
   )
 }
