@@ -44,7 +44,7 @@ export const OptionsToolBar = () => {
       open={open}
       onClose={closeForm}
     >
-        { currentForm }
+      {currentForm}
     </Modal>
   </>
 }

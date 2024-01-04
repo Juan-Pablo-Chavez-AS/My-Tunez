@@ -10,7 +10,7 @@ interface AlbumListProps {
 }
 
 export const AlbumList: React.FC<AlbumListProps> = ({ artist }) => {
-  const {albums, setAlbums} = useAlbumStore();
+  const { albums, setAlbums } = useAlbumStore();
 
   useEffect(() => {
     const repository = new AlbumRepository()

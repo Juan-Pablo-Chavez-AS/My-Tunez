@@ -19,7 +19,7 @@ export const SongForm: React.FC<SongFormProps> = forwardRef(({ closeModal }, ref
   const [albums, setAlbums] = useState<{ id: number, label: string }[]>([]);
   const [genre, setGenre] = useState<string>("");
   const [file, setFile] = useState<string>("");
-  const [ isComplete, setIsComplete ] = useState<boolean>(false);
+  const [isComplete, setIsComplete] = useState<boolean>(false);
   const { setSongs } = useSongStore();
   const { openNotification } = useSuccessNotification();
 

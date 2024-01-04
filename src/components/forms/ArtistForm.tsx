@@ -18,7 +18,7 @@ export const ArtistForm: React.FC<ArtistFormProps> = forwardRef(({ closeModal },
   const [members, setMembers] = useState<string[]>([]);
   const [image, setImage] = useState<string>("");
   const [webpage, setWebpage] = useState<string>("");
-  const [ isComplete, setIsComplete ] = useState<boolean>(false);
+  const [isComplete, setIsComplete] = useState<boolean>(false);
   const { setArtists } = useArtistStore();
   const { openNotification } = useSuccessNotification();
 

@@ -20,7 +20,7 @@ export const AlbumForm: React.FC<AlbumFormProps> = forwardRef(({ closeModal }, r
   const [genres, setGenres] = useState<string[]>([]);
   const [year, setYear] = useState<number | string>('');
   const [artists, setArtists] = useState<{ id: number, name: string }[]>([]);
-  const [ isComplete, setIsComplete ] = useState<boolean>(false);
+  const [isComplete, setIsComplete] = useState<boolean>(false);
   const { setAlbums } = useAlbumStore();
   const { openNotification } = useSuccessNotification();
 
@@ -75,9 +75,9 @@ export const AlbumForm: React.FC<AlbumFormProps> = forwardRef(({ closeModal }, r
 
         <Autocomplete
           fullWidth
-          options={artists.map(artist => {return { label: artist.name, id: artist.id }})}
+          options={artists.map(artist => { return { label: artist.name, id: artist.id } })}
           renderInput={(params) => <TextField {...params} required label="Artist" />}
-          value={ artistFinder(artist) ? { label: artistFinder(artist)?.name || '', id: artist } : null}
+          value={artistFinder(artist) ? { label: artistFinder(artist)?.name || '', id: artist } : null}
           onChange={(_, value) => setArtist(value?.id || 0)}
           isOptionEqualToValue={(option, value) => option.id === value.id}
         />

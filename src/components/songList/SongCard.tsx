@@ -35,10 +35,10 @@ export const SongCard = ({ song }: SongCardProps) => {
       {currentSong?.id === song.id && isPlaying &&
         <PauseCircleOutline color="success" fontSize={"small"} />
       }
-      {isHovered && (currentSong?.id !== song.id)  && (
+      {isHovered && (currentSong?.id !== song.id) && (
         <PlayCircleFilledOutlined color="success" fontSize={"small"} />
       )}
-      {currentSong?.id === song.id && !isPlaying  && (
+      {currentSong?.id === song.id && !isPlaying && (
         <PlayCircleFilledOutlined color="success" fontSize={"small"} />
       )}
       <Typography display={"inline"}>{song.title}</Typography>

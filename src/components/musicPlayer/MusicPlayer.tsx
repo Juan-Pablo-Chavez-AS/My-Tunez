@@ -39,31 +39,31 @@ export const MusicPlayer = () => {
     setNextSong();
   }
 
-  return <Card elevation={10} sx={{ width: "40%", height: "100%", p: 0.5, display: "flex", justifyContent: "center", alignItems: "center"}} >
+  return <Card elevation={10} sx={{ width: "40%", height: "100%", p: 0.5, display: "flex", justifyContent: "center", alignItems: "center" }} >
     <AudioPlayer
-    src={currentSong?.file ?? ''}
-    autoPlay
-    autoPlayAfterSrcChange
-    className='music-player'
-    showSkipControls
-    onPlay={() => setIsPlaying(true)}
-    onPause={() => setIsPlaying(false)}
-    onClickPrevious={previousSong}
-    onClickNext={nextSong}
-    onEnded={nextSong}
-    customAdditionalControls={[
-      <IconButton onClick={clearCurrentSong}>
-        <StopCircleOutlined/>
-      </IconButton>,
-      <IconButton onClick={ shuffle ? toggleShuffleOff : toggleShuffleOn}>
-        {shuffle ?
-          <ShuffleSharp/>
-          :
-          <ArrowRightAlt/>
-        }
-      </IconButton>
-    ]}
-    ref={audioRef}
+      src={currentSong?.file ?? ''}
+      autoPlay
+      autoPlayAfterSrcChange
+      className='music-player'
+      showSkipControls
+      onPlay={() => setIsPlaying(true)}
+      onPause={() => setIsPlaying(false)}
+      onClickPrevious={previousSong}
+      onClickNext={nextSong}
+      onEnded={nextSong}
+      customAdditionalControls={[
+        <IconButton onClick={clearCurrentSong}>
+          <StopCircleOutlined />
+        </IconButton>,
+        <IconButton onClick={shuffle ? toggleShuffleOff : toggleShuffleOn}>
+          {shuffle ?
+            <ShuffleSharp />
+            :
+            <ArrowRightAlt />
+          }
+        </IconButton>
+      ]}
+      ref={audioRef}
     />
   </Card>
 }

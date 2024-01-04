@@ -3,7 +3,7 @@ import { Artist } from '../types/types'
 
 type ArtistStore = {
   artists: Artist[]
-  setArtists: (artists:Artist[]) => void
+  setArtists: (artists: Artist[]) => void
 }
 
 export const useArtistStore = create<ArtistStore>()((set) => ({

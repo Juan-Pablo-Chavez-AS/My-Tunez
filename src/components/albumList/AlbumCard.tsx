@@ -30,9 +30,9 @@ export const AlbumCard: React.FC<AlbumCardProps> = ({ album }) => {
       image={album.image}
       alt={album.title}
     />
-    <CardContent component={Paper} sx={{ width: "100%", paddingLeft: 1, height: 200}} elevation={10} >
+    <CardContent component={Paper} sx={{ width: "100%", paddingLeft: 1, height: 200 }} elevation={10} >
       <Typography fontWeight={"bold"} fontSize={"1.3rem"}>{album.title}</Typography>
-        <SongList songs={albumSongs} />
+      <SongList songs={albumSongs} />
     </CardContent>
   </Card>;
 }

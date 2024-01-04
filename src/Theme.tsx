@@ -45,7 +45,7 @@ const theme = createTheme({
           "&:hover": {
             transform: "scale(1.02)",
             bgcolor: "#282828",
-        },
+          },
           bgcolor: "#181818",
         },
       },

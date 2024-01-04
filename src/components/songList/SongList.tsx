@@ -13,9 +13,9 @@ export const SongList: React.FC<SongListProps> = ({ songs }) => {
     {
       songs.map((song) => {
         return (
-          <SongCard song={song} key={song.id}/>
+          <SongCard song={song} key={song.id} />
         );
       })
     }
-    </Stack>;
+  </Stack>;
 }

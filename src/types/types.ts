@@ -24,4 +24,3 @@ export interface Album {
   year: number
   image: string
 }
-// Unoptional most of the fields after 'API' is ready

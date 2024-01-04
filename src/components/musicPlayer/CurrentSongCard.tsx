@@ -36,7 +36,7 @@ export const CurrentSongCard = () => {
         alt={currentSong?.title}
       />
       <CardContent component={Paper} sx={{ width: "100%", paddingLeft: 1, height: "100%" }} elevation={10} >
-        <Typography fontWeight={"bold"} fontSize={"1.2rem"}>{currentSong?.title ?? "No song selected" }</Typography>
+        <Typography fontWeight={"bold"} fontSize={"1.2rem"}>{currentSong?.title ?? "No song selected"}</Typography>
         <Typography fontSize={"1.1rem"}>{artist}</Typography>
       </CardContent>
     </Stack>
